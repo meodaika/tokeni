@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": { "start": "node index.js" },
   "dependencies": {
     "coinbase-pro-node": "^3.1.0",
     "ejs": "^3.1.6",

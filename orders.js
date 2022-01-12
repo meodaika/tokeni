@@ -440,11 +440,11 @@ const initArr = [
             cancel_after: 'min',
             post_only: false
           }
-          console.log('creatting order') ;
+        //   console.log('creatting order') ;
 
           try{
             let newOrder  = await client.rest.order.placeOrder(orderData)
-            console.log(newOrder)
+            // console.log(newOrder)
             return newOrder
           }
           catch(error){
@@ -454,12 +454,13 @@ const initArr = [
           }
     }
 
+
 class Order{
     constructor(){
         this.orders = []
-        this.orders = initArr
+        // this.orders = initArr
         this.spawnable = false;
-        this.rate = 3500 // 40 order / 60s. Default : 1500
+        this.rate = 500 // 40 order / 60s. Default : 1500
         this.minBuy = 0.001
         this.maxBuy = 0.002
         this.minSell = 0.001
@@ -468,6 +469,7 @@ class Order{
     }
     addOrder(order){
         this.orders.push(order)
+        // console.log('order length', this.orders.length)
     }
 
     clearOrder(){
@@ -486,7 +488,7 @@ class Order{
     }
 
     updateCreateOption(data){
-        if(data.spawnable){
+        if(typeof data.spawnable !== 'undefined'){
             if(data.spawnable === true)
                 this.startSpawn();
             else 
@@ -496,13 +498,21 @@ class Order{
 
     startSpawn(){
         // this.spawnable = true;
+
         this.interval = setInterval(() => {
             const side = Math.floor(Math.random() * 101) > 50 ? 'buy' : 'sell'
-            createOrder(side, 0.01500000, 2.3);
+            const price = Math.random() / 10
+            const size = Math.random() * 10
+            // console.log(size,'zi')
+            const decimalPrice = Math.floor(Math.random() * (5 - 2 + 1) + 2);
+            const decimalSize = Math.floor(Math.random() * (5 - 2 + 1) + 2);
+            createOrder(side,+price.toFixed(decimalPrice), +size.toFixed(decimalSize));
         }, this.rate)
     }
 
     stopSpawn(){
+        console.log('stop')
+
         clearInterval(this.interval)
     }
 }

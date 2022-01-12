@@ -184,5 +184,21 @@ i {
 
 #right-bar{
     height: 100vh;
-    background-color:rgba(225, 225, 225, 0.3)
+    background-color:rgba(225, 225, 225, 0.3);
+    padding-top: 20px;
+}
+
+.new-added-order{
+    margin-top: 50px;
+}
+
+#new-order{
+    font-size: 13px;
+    max-height: 50vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#new-order .list-group-item{
+    padding: 7px 1.25rem !important;
 }

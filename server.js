@@ -1,10 +1,9 @@
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
-const orders = require("./orders");
 
 const routes = require("./router");
-const initSocket = require("./socketCoin");
+// const initSocket = require("./socketCoin");
 
 const app = express();
 // const server = require('http').createServer(app);
@@ -14,10 +13,10 @@ app.use(express.static(__dirname + "/statics"));
 
 app.use(routes);
 
-const port = process.env.PORT || 3000;
-initSocket();
+// initSocket();
 const server = http.createServer(app);
-const io = socketIo(server);
+// console.log(server, 'se')
+/* const io = socketIo(server);
 io.sockets.on("connection", function (socket) {
     console.log('oh, new man')
     socket.on("update auto", (data) => {
@@ -37,7 +36,10 @@ io.on('connection', () => {
     const allOrder = orders.getOrders()
     io.emit('fetch order', allOrder);
 }, 5000)
+ */
+module.exports = server;
 
-server.listen(port, () => {
+/* server.listen(port, () => {
   console.log(`running at port ${port}`);
 });
+ */

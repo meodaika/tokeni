@@ -1,7 +1,7 @@
 Vue.component('order-panels', {
     template: `
     <div >
-    <div><p class="text-center">Refresh list in {{ timer }}s</p></div>
+    <div><p v-show="false" class="text-center">Refresh list in {{ timer }}s</p></div>
     <div class="row d-flex justify-content-center container">
     
     <price-list type="Bid" :orders="bid"></price-list>

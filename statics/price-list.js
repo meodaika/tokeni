@@ -36,7 +36,7 @@ Vue.component('price-list', {
                                    
                                 </div>
                                 <div class="widget-content-right"> 
-                                    <span>{{ type }}</span>                                                    
+                                    <span class="text-primary">{{ type }}</span>                                                    
                                 </div>
                             </div>
                         </div>
